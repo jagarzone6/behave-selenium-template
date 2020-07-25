@@ -4,10 +4,8 @@ Feature: Login
   I want to Login
   So that I can interact with the app
 
-
   Background:
     Given I access my Demo App
-
 
   @happyPath
   Scenario: Valid Login
