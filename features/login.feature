@@ -4,15 +4,18 @@ Feature: Login
   I want to Login
   So that I can interact with the app
 
+
+  Background:
+    Given I access my Demo App
+
+
   @happyPath
   Scenario: Valid Login
-    Given I access my Demo App
     When I log in with user "demo" and password "mode"
     Then welcome page should display
 
   @negative
   Scenario Outline: Invalid Login
-    Given I access my Demo App
     When I log in with user "<username>" and password "<password>"
     Then error page should display
     Examples:
