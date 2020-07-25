@@ -4,20 +4,24 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 
 
-def get_driver():
-    if _Driver.driver is None:
-        _Driver.driver = webdriver.Remote(
-            command_executor='http://127.0.0.1:4444/wd/hub',
-            desired_capabilities=DesiredCapabilities.CHROME)
-    return _Driver.driver
-
-
-def quit_driver():
-    _Driver.driver.quit()
-
-
-class _Driver:
+class Driver:
     driver: WebDriver = None
+
+    @staticmethod
+    def get_driver():
+        if Driver.driver is None:
+            Driver.driver = webdriver.Remote(
+                command_executor='http://127.0.0.1:4444/wd/hub',
+                desired_capabilities=DesiredCapabilities.CHROME)
+        return Driver.driver
+
+    @staticmethod
+    def quit_driver():
+        Driver.driver.quit()
+
+
+def go_to(url: str):
+    Driver.driver.get(url)
 
 
 class Locator:

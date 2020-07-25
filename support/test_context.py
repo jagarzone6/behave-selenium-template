@@ -1,7 +1,4 @@
 from behave.runner import Context
-from selenium.webdriver.remote.webdriver import WebDriver
-from pages.login_page import LoginPage
-from support.driver import get_driver
 
 
 class TestContext(Context):
@@ -22,14 +19,3 @@ class TestContext(Context):
         self.stderr_capture = context.stderr_capture
         self.log_capture = context.log_capture
         self.fail_on_cleanup_errors = context.fail_on_cleanup_errors
-        self.app: App = App(get_driver())
-
-
-class App:
-
-    def __init__(self, driver: WebDriver):
-        self.login_page = LoginPage(driver)
-        self.driver = driver
-
-    def go_to(self, url: str):
-        self.driver.get(url)

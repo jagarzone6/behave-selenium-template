@@ -9,7 +9,6 @@ class LoginPage(BasePage):
     __username_field: Locator = Locator(By.ID, 'username_field')
     __password_field: Locator = Locator(By.ID, 'password_field')
     __login_button: Locator = Locator(By.ID, 'login_button')
-    __logout_link: Locator = Locator(By.XPATH, '//a[text()="logout"]')
     __error_header: Locator = Locator(By.XPATH, '//h1[text()="Error Page"]')
 
     def __init__(self, driver: WebDriver):
@@ -25,8 +24,17 @@ class LoginPage(BasePage):
     def click_login(self):
         self._click(LoginPage.__login_button)
 
-    def is_logout_visible(self) -> bool:
-        return self._is_element_visible(LoginPage.__logout_link)
-
     def is_error_visible(self) -> bool:
         return self._is_element_visible(LoginPage.__error_header)
+
+
+__login_instance: LoginPage = None
+
+
+def init_login(driver: WebDriver):
+    global __login_instance
+    __login_instance = LoginPage(driver)
+
+
+def login():
+    return __login_instance

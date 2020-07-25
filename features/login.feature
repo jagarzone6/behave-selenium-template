@@ -7,13 +7,13 @@ Feature: Login
   @happyPath
   Scenario: Valid Login
     Given I access my Demo App
-    When I "demo" log in with password "mode"
+    When I log in with user "demo" and password "mode"
     Then welcome page should display
 
   @negative
   Scenario Outline: Invalid Login
     Given I access my Demo App
-    When I "<username>" log in with password "<password>"
+    When I log in with user "<username>" and password "<password>"
     Then error page should display
     Examples:
       | username | password |
