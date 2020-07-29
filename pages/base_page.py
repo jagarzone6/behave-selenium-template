@@ -1,7 +1,11 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.by import By
-from support.driver import Locator
+from dataclasses import dataclass
 
+@dataclass
+class Locator:
+    by: By
+    locator: str
 
 class BasePage:
 

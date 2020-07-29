@@ -15,8 +15,10 @@ def login_step(context: TestContext, user_name, password):
 @then('welcome page should display')
 def step_impl_3(context: TestContext):
     assert welcome().is_logout_visible() is True
+    context.scenario_data.login_succeeded = 1
 
 
 @then('error page should display')
 def error_diplayed(context: TestContext):
     assert login().is_error_visible() is True
+    context.scenario_data.login_succeeded = 0

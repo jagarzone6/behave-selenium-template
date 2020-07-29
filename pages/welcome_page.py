@@ -1,8 +1,7 @@
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.by import By
-from support.driver import Locator
-from pages.base_page import BasePage
+from pages.base_page import BasePage, Locator
 
 
 class WelcomePage(BasePage):

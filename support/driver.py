@@ -22,9 +22,3 @@ class Driver:
 
 def go_to(url: str):
     Driver.driver.get(url)
-
-
-class Locator:
-    def __init__(self, by: By, locator: str):
-        self.by: By = by
-        self.locator: str = locator
