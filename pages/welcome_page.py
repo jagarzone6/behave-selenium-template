@@ -13,15 +13,3 @@ class WelcomePage(BasePage):
 
     def is_logout_visible(self) -> bool:
         return self._is_element_visible(WelcomePage.__logout_link)
-
-
-__welcome_instance: WelcomePage = None
-
-
-def init_welcome(driver: WebDriver):
-    global __welcome_instance
-    __welcome_instance = WelcomePage(driver)
-
-
-def welcome():
-    return __welcome_instance

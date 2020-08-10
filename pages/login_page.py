@@ -25,15 +25,3 @@ class LoginPage(BasePage):
 
     def is_error_visible(self) -> bool:
         return self._is_element_visible(LoginPage.__error_header)
-
-
-__login_instance: LoginPage = None
-
-
-def init_login(driver: WebDriver):
-    global __login_instance
-    __login_instance = LoginPage(driver)
-
-
-def login():
-    return __login_instance

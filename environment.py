@@ -3,13 +3,13 @@ from support.driver import Driver
 from support.test_context import TestContext, ScenarioData
 from selenium.webdriver.remote.webdriver import WebDriver
 from support.driver import Driver
-import pages
+from support.pages import with_driver
 
 
 def before_all(context: Context):
     print("before_all activated")
     context = TestContext(context)
-    pages.with_driver(Driver.get_driver())
+    with_driver(Driver.get_driver())
 
 
 def after_all(context: TestContext):

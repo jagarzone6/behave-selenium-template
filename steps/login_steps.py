@@ -1,24 +1,24 @@
 from behave import use_step_matcher, when, then, given
 from support.test_context import TestContext
-from pages import login, welcome
+import support.pages as pages
 
 use_step_matcher('re')
 
 
 @when('I log in with user "(.*)" and password "(.*)"')
 def login_step(context: TestContext, user_name, password):
-    login().set_username(user_name)
-    login().set_password(password)
-    login().click_login()
+    pages.login.set_username(user_name)
+    pages.login.set_password(password)
+    pages.login.click_login()
 
 
 @then('welcome page should display')
 def step_impl_3(context: TestContext):
-    assert welcome().is_logout_visible() is True
+    assert pages.welcome.is_logout_visible() is True
     context.scenario_data.login_succeeded = 1
 
 
 @then('error page should display')
 def error_diplayed(context: TestContext):
-    assert login().is_error_visible() is True
+    assert pages.login.is_error_visible() is True
     context.scenario_data.login_succeeded = 0
